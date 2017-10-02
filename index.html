@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Media Taskboard</title>
+    <link rel="shortcut icon" href="assets/pictures/img/title.png" type="image/png">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="scss/style.scss">
+
+    <!--FONT-->
+
+
+    <!--JS-->
+    <script>
+        function createNewTask() {
+            document.getElementById('newtask_popup').classList.toggle('creator-newtask__popup--active');
+        }
+    </script>
+    <script>
+        function closePopup() {
+            document.getElementById('newtask_popup').classList.remove('creator-newtask__popup--active');
+        }
+    </script>
+    <script>
+        function openNextPopup() {
+            document.getElementById('popup_translator').classList.add('popup-show');
+            document.getElementById('main_popup').classList.add('popup-hide');
+        }
+    </script>
+
+    <script>
+        function showSearchField() {
+            document.getElementById('header_search_content').classList.toggle('header-search__content--active');
+        }
+    </script>
+    <script>
+        function schowTaskDescription() {
+            document.getElementById('task_body').classList.toggle('task__body--active');
+        }
+    </script>
+
+
+</head>
+<body>
+
+<div class="creator-newtask__popup" id="newtask_popup">
+
+    <img src="assets/pictures/svg/cross.svg" class="creator-newtask-close" alt="Close" onclick="closePopup(this)"/>
+
+    <ul class="creator-newtask-list popup" id="main_popup">
+
+        <li class="creator-newtask-item">
+            <img src="assets/pictures/svg/notepad.svg" class="creator-newtask-item-img" alt="Item img" />
+            <p class="creator-newtask-item-text">Копирайтер</p>
+        </li>
+        <li class="creator-newtask-item">
+            <img src="assets/pictures/svg/translate.svg" class="creator-newtask-item-img" alt="Item img" />
+            <p class="creator-newtask-item-text" onclick="openNextPopup(this)">Переводчик</p>
+        </li>
+        <li class="creator-newtask-item">
+            <img src="assets/pictures/svg/coding.svg" class="creator-newtask-item-img" alt="Item img" />
+            <p class="creator-newtask-item-text">Разработчик</p>
+        </li>
+        <li class="creator-newtask-item">
+            <img src="assets/pictures/svg/lips.svg" class="creator-newtask-item-img" alt="Item img" />
+            <p class="creator-newtask-item-text">Шаблон для адалта</p>
+        </li>
+        <li class="creator-newtask-item">
+            <img src="assets/pictures/svg/time.svg" class="creator-newtask-item-img" alt="Item img" />
+            <p class="creator-newtask-item-text">Последняя задача</p>
+        </li>
+        <li class="creator-newtask-item">
+            <img src="assets/pictures/svg/add.svg" class="creator-newtask-item-img" alt="Item img" />
+            <p class="creator-newtask-item-text--gray">Новый шаблон</p>
+        </li>
+
+    </ul>
+
+    <ul class="popup-child" id="popup_copywriter"></ul>
+
+    <ul class="popup-child" id="popup_translator">
+
+        <li class="creator-newtask-item">
+            <span class="executor-number">1.</span>
+            <label for="executor_name" class="executor-text"></label>
+            <input type="text" name="executor-name" id="executor_name" class="executor-field" placeholder="Имя" />
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number">2.</span>
+            <label for="executor_number" class="executor-text"></label>
+            <input type="tel" name="executor-number" id="executor_number" class="executor-field" placeholder="Номер телефона" />
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number">3.</span>
+            <label for="executor_skype" class="executor-text"></label>
+            <input type="tel" name="executor-skype" id="executor_skype" class="executor-field" placeholder="Skype" />
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number">4.</span>
+            <label for="executor_division" class="executor-text">Отдел:</label>
+            <select name="" id="executor_division" class="executor-field-list" required>
+                <option class="executor-field-item">1</option>
+                <option class="executor-field-item">2</option>
+            </select>
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number">5.</span>
+            <label for="executor_task_name" class="executor-text"></label>
+            <input type="text" name="executor-task-name" id="executor_task_name" class="executor-field" placeholder="Название задачи" />
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number">6.</span>
+            <label for="executor_priority" class="executor-text">Приоритет:</label>
+            <select name="" id="executor_priority" class="executor-field-list" required>
+                <option class="executor-field-item" id="priority_low">Низкий</option>
+                <option class="executor-field-item" id="priority_middle">Средний</option>
+                <option class="executor-field-item" id="priority_high">Высокий</option>
+            </select>
+        </li>
+        <li class="creator-newtask-item bday__container">
+            <span class="executor-number" class="executor-text">7.</span>
+            <label for="executor_bday"><img src="assets/pictures/svg/calendar.svg" class="field-img"></label>
+            <input type="date" name="executor-bday" id="executor_bday" class="executor-field bday-block"/>
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number" class="executor-text">8.</span>
+            <label for="executor_language">Приоритет:</label>
+            <select name="" id="executor_language" class="executor-field-list" multiple required>
+                <option class="executor-field-item" value="AZ">Азербайджанский</option>
+                <option class="executor-field-item" value="EN">Английский</option>
+                <option class="executor-field-item" value="AE">Арабский</option>
+                <option class="executor-field-item" value="AM">Армянский</option>
+                <option class="executor-field-item" value="BG">Болгарский</option>
+                <option class="executor-field-item" value="HU">Венгерский</option>
+                <option class="executor-field-item" value="VN">Вьетнамский</option>
+                <option class="executor-field-item" value="ID">Индонезийский</option>
+                <option class="executor-field-item" value="ES">Испанский</option>
+                <option class="executor-field-item" value="CH">Китайский</option>
+                <option class="executor-field-item" value="TW">Китайский (Тайвань)</option>
+                <option class="executor-field-item" value="KG">Киргизский</option>
+                <option class="executor-field-item" value="latam">ЛАТАМ</option>
+                <option class="executor-field-item" value="MY">Малайский</option>
+                <option class="executor-field-item" value="PO">Польский</option>
+                <option class="executor-field-item" value="PT">Португальский</option>
+                <option class="executor-field-item" value="RO">Румынский</option>
+                <option class="executor-field-item" value="RS">Сербский</option>
+                <option class="executor-field-item" value="SI">Словенский</option>
+                <option class="executor-field-item" value="TJ">Таджикский</option>
+                <option class="executor-field-item" value="TH">Тайский</option>
+                <option class="executor-field-item" value="TR">Турецкий</option>
+                <option class="executor-field-item" value="UZ">Узбекский</option>
+                <option class="executor-field-item" value="UA">Украинский</option>
+                <option class="executor-field-item" value="PH">Филиппинский</option>
+                <option class="executor-field-item" value="FI">Финский</option>
+                <option class="executor-field-item" value="IN">Хинди</option>
+                <option class="executor-field-item" value="HR">Хорватский</option>
+                <option class="executor-field-item" value="EE">Эстонский</option>
+                <option class="executor-field-item" value="JP">Японский</option>
+            </select>
+        </li>
+        <li class="creator-newtask-item">
+            <span class="executor-number">9.</span>
+            <label for="executor_task_text" class="executor-text"></label>
+            <textarea name="executor-task-text" id="executor_task_text" class="executor-field" placeholder="Комментарии"></textarea>
+        </li>
+        <li class="creator-newtask-item">
+            <button type="submit" formaction="#" name="submit_signup" class="form-btn" value="submit">Отправить!</button>
+        </li>
+
+    </ul>
+
+</div>
+
+<header class="header">
+
+    <div class="header-wrapper">
+
+        <a href="" class="header-logo-link">
+            <img src="assets/pictures/svg/logo.svg" class="header-logo-img" alt="Panda Media's logo" />
+        </a>
+
+        <div class="header-search__container">
+
+            <div class="header-search-wrapper">
+
+                <img src="assets/pictures/svg/search.svg" class="header-search-img" onclick="showSearchField(this)" alt="Search image" />
+
+                <div class="header-search__content" id="header_search_content">
+
+                    <label for="header_search"></label>
+                    <input type="search" class="header-form" id="header_search" placeholder="Поиск..."/>
+
+                    <label for="header_tags"></label>
+                    <select name="header-tags" id="header_tags" class="header-tags__container">
+                        <option class="header-tag">Все</option>
+                        <option class="header-tag" id="tag_name">Название</option>
+                        <option class="header-tag" id="tag_theme">Тема</option>
+                        <option class="header-tag" id="tag_type">Тип</option>
+                        <option class="header-tag" id="tag_language">Язык</option>
+                        <option class="header-tag" id="tag_deadline">Deadline</option>
+                        <option class="header-tag" id="tag_id">ID</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="header-task__container">
+
+            <div class="header-task-wrapper">
+
+                <span class="header-task-number" id="header_num">1</span>
+                <img src="assets/pictures/svg/list.svg" class="header-task-img" alt="Task image" />
+
+                <div class="header-task__content">
+
+                    <label for="header_task_list"></label>
+                    <select name="task-list" id="header_task_list" class="header-task-list">
+                        <option class="header-task-item">Все</option>
+                        <option class="header-task-item" id="task_active">Активные</option>
+                        <option class="header-task-item" id="task_order">В очереди</option>
+                        <option class="header-task-item" id="task_completed">Выполненные</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="header-user__container">
+
+            <div class="head-use-wrapper">
+
+                <h2 class="header-user-name" id="header_user_name">Username</h2>
+                <img src="assets/pictures/svg/user.svg" class="header-user-avatar" id="header_user_avatar" alt="User avatar" />
+
+            </div>
+
+        </div>
+
+        <img src="assets/pictures/svg/settings.svg" class="header-img" alt="Setting" />
+
+    </div>
+
+</header>
+
+<main>
+
+    <div class="main-wrapper">
+
+        <div class="creator__container" id="creator">
+
+            <div class="creator-newtask__container">
+
+                <img src="assets/pictures/svg/add.svg" class="creator-newtask-icon" alt="Add new task" onclick="createNewTask(this)"/>
+                <h1 class="creator-newtask-caption" onclick="createNewTask(this)">Создать задачу</h1>
+
+            </div>
+
+            <div class="tasks__container">
+
+                <div class="task">
+
+                    <div class="task__container">
+
+                        <div class="task__description">
+
+                            <div class="task-wrapper">
+
+                                <img src="assets/pictures/svg/user.svg" class="task-user-avatar" alt="User's avatar" />
+                                <h3 class="task-caption" id="task_caption" onclick="schowTaskDescription(this)">Task caption</h3>
+
+                            </div>
+
+                        </div>
+
+                        <div class="task__info">
+
+                            <div class="task-wrapper">
+
+                                <span class="task-icon" id="task_notification">!</span>
+                                <span class="task-text" id="task_percent">100%</span>
+                                <span class="task-icon" id="task_tag"></span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="task__date-and-time">
+
+                            <div class="task-wrapper">
+
+                                <span class="task-text" id="task_time">12:56</span>
+                                <span class="task-text" id="task_date">02/10/2017</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="task__body" id="task_body">
+
+                        <div class="task-body__userdata">
+
+                            <p class="task-text" id="task_user_name">Username</p>
+                            <span class="task-text" id="task_user_nickname">nickname</span>
+                            <span class="task-text" id="task_user_email">example@example.com</span>
+
+                        </div>
+
+                        <div class="task-body__container">
+
+                            <div class="task-body__points" id="points_container">
+
+                                <div class="task-body-point">
+
+                                    <input type="checkbox" name="check" class="task-check" id="check_1" />
+                                    <label for="check_1" class="task-check-text">Пункт 1</label>
+
+                                    <span class="task-text" id="task_data_1">75% оригинальности</span>
+
+                                </div>
+
+                                <div class="task-body-point">
+
+                                    <input type="checkbox" name="check" class="task-check" id="check_2" />
+                                    <label for="check_2" class="task-check-text">Пункт 1</label>
+
+                                    <span class="task-text" id="task_data_2">10 комментариев</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="task-body--add">
+
+                                <a href="" class="task-body-link"><img src="assets/pictures/svg/add.svg" class="task-body-icon" alt="Add new point" /></a>
+                                <a href="" class="task-body-link"><p class="task-text">Добавить задачу...</p></a>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="task-body__buttons">
+
+                            <a href="" class="task-body-btn" id="creator_task_done">Завершить</a>
+                            <a href="" class="task-body-btn" id="creator_task_waite">Отложить</a>
+                            <a href="" class="task-body-btn" id="creator_task_cancel">Отменить</a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</main>
+
+
+
+</body>
+</html>
