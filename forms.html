@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добро пожаловать в Panda Media Taskboard!</title>
+    <link rel="shortcut icon" href="assets/pictures/img/title.png" type="image/png">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="scss/style.scss">
+
+    <!--FONT-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+
+    <!--JS-->
+    <script>
+        function toggleForm() {
+            document.getElementById('form_sigin').classList.toggle('form__container--active');
+            document.getElementById('form_sigup').classList.toggle('form__container--active');
+        }
+    </script>
+
+</head>
+<body class="body-form">
+
+    <div class="form-wrapper">
+
+        <div id="form_sigin" class="form__container form__container--active">
+
+            <form action="#" method="#" id="form_signin" class="form-signin">
+
+                <div class="field__container">
+
+                    <span class="field-number">1.</span>
+                    <label for="field_signin_list" class="field-text">Ваша роль:</label>
+                    <select name="" id="field_signin_list" class="field-signin-list" autofocus required>
+                        <option class="field-signin-item" value="creator">Создатель</option>
+                        <option class="field-signin-item" value="executor">Исполнитель</option>
+                    </select>
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">2.</span>
+                    <label for="name_signin"></label>
+                    <input type="email" name="email" id="name_signin" class="field-signin" placeholder="Email"/>
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">3.</span>
+                    <label for="password_signin"></label>
+                    <input type="password" name="password" id="password_signin" class="field-signin" placeholder="Пароль"/>
+
+                </div>
+
+                <span class="form-hint">Впервые здесь? <a href="#" id="go_to_registration" class="form-link" onclick="toggleForm(this)">Зарегистрируйся!</a></span>
+
+                <button type="submit" formaction="#" name="submit_signin" class="form-btn" value="signin">Вперед!</button>
+
+            </form>
+
+        </div>
+
+        <div id="form_sigup" class="form__container">
+
+            <form action="#" method="#" enctype="multipart/form-data" id="form_signup" class="form-signup">
+
+                <div class="field__container">
+
+                    <span class="field-number">1.</span>
+                    <label for="field_signup_list" class="field-text">Ваша роль:</label>
+                    <select name="" id="field_signup_list" class="field-signup-list" autofocus required>
+                        <option class="field-signup-item" value="creator">Создатель</option>
+                        <option class="field-signup-item" value="executor">Исполнитель</option>
+                    </select>
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">2.</span>
+                    <label for="user_name"></label>
+                    <input type="text" name="user-name" id="user_name" class="field-signup" placeholder="Имя" />
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">3.</span>
+                    <label for="user_email"></label>
+                    <input type="email" name="user-email" id="user_email" class="field-signup" placeholder="Email" />
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">4.</span>
+                    <label for="user_password"></label>
+                    <input type="password" name="user-password" id="user_password" class="field-signup" placeholder="Придумайте пароль" />
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">5.</span>
+                    <label for="user_re_password"></label>
+                    <input type="password" name="user-re-password" id="user_re_password" class="field-signup" placeholder="Повторите пароль" />
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">6.</span>
+                    <label for="user_phone"></label>
+                    <input type="tel" name="user-phone" id="user_phone" class="field-signup" placeholder="Мобильный номер" />
+
+                </div>
+
+                <div class="field__container bday__container">
+
+                    <span class="field-number">7.</span>
+
+                    <label for="user_bday"><img src="assets/pictures/svg/calendar.svg" class="field-img"></label>
+                    <input type="date" name="user-bday" id="user_bday" class="field-signup bday-block"/>
+
+
+                </div>
+
+                <div class="field__container">
+
+                    <span class="field-number">8.</span>
+                    <label for="user-avatar"></label>
+                    <input type="file" name="user-avatar" id="user-avatar" class="field-avatar"/>
+                    <input type="submit" value="download" class="field-avarat-btn" />
+
+                </div>
+
+                <span class="form-hint">Уже зарегестрированы? <a href="#" id="go_to_login" class="form-link" onclick="toggleForm(this)">Войти в профиль!</a></span>
+
+                <button type="submit" formaction="#" name="submit_signup" class="form-btn" value="signup">Зарегистрироваться!</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
