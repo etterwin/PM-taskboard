@@ -90,11 +90,13 @@ a {
   position: relative; }
 
 .field-img {
-  position: absolute;
-  right: 0;
   width: 20px; }
 
 .bday-block {
+  position: absolute;
+  right: 0; }
+
+.field-bday-img {
   position: absolute;
   right: 0; }
 
@@ -104,7 +106,8 @@ a {
 /*index*/
 .header {
   width: 100%;
-  height: 130px; }
+  height: 130px;
+  position: relative; }
 
 .header-wrapper {
   max-width: 1200px;
@@ -199,6 +202,48 @@ a {
   outline: none;
   border: 0;
   background: white; }
+
+.header-short-task__container {
+  display: none;
+  opacity: 0;
+  top: 50px;
+  left: -250px;
+  z-index: 99999;
+  width: 400px;
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.15);
+  padding: 25px 15px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 4px;
+  position: absolute; }
+
+.header-short-task__container--active {
+  opacity: 1;
+  display: block;
+  transition: all 0.3s ease; }
+
+.short-task__content {
+  margin: 5px 0;
+  width: 100%;
+  border-top: 1px solid #999; }
+
+.short-task__content:first-child {
+  border: 0; }
+
+.short-task-caption {
+  font-size: 18px; }
+
+.short-task-btn {
+  background: none;
+  outline: none;
+  border: none;
+  padding: 5px;
+  box-sizing: border-box;
+  opacity: 0.7; }
+
+.short-task-btn:hover {
+  opacity: 1;
+  transition: all 0.2s ease; }
 
 .header-user-name {
   font-size: 20px;
@@ -414,10 +459,10 @@ a {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5); }
 
-.creator-newtask-close {
+.popup-close {
   position: absolute;
   width: 20px;
-  top: 22%;
+  top: 0;
   cursor: pointer;
   left: calc(50% + 200px); }
 
@@ -462,7 +507,7 @@ a {
   display: none;
   position: absolute;
   list-style: none;
-  top: calc(50% - 365px);
+  top: calc(50% - 390px);
   left: calc(50% - 175px);
   width: 350px;
   background: white;
@@ -476,6 +521,9 @@ a {
 .popup-hide {
   display: none; }
 
+.popup-list {
+  padding: 0; }
+
 .executor-field {
   outline: none;
   border: 0;
@@ -485,10 +533,35 @@ a {
   margin-left: 10px; }
 
 .executor-field-list {
-  background: white;
+  background: none;
   outline: none;
   outline-offset: 0;
   border: 1px solid #999;
   border-radius: 4px; }
+
+.executor-field-img {
+  position: absolute;
+  right: 0; }
+
+.executor-field-wrapper {
+  width: 65%; }
+
+.executor__date {
+  margin: 0 0 5px 5px;
+  position: relative; }
+
+.executor-field-date {
+  outline: none;
+  outline-offset: 0;
+  border: 0;
+  background: none;
+  width: 100%; }
+
+.field-date {
+  position: absolute;
+  right: 0; }
+
+.executor__time {
+  margin: 0 0 5px 5px; }
 
 /*# sourceMappingURL=style.css.map */
