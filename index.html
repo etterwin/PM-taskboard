@@ -14,8 +14,7 @@
 
 
     <!--JS-->
-    <script src="js/popupHide.js"></script>
-    <script src="js/ShortTasks.js"></script>
+    <script src="js/hideBlock.js"></script>
     <script src="js/toggleClass.js"></script>
     <script src="js/countShortTask.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
@@ -23,6 +22,8 @@
 
 </head>
 <body>
+
+<div class="shadow" id="shadow"></div>
 
 <div class="creator-newtask__popup" id="newtask_popup">
 
@@ -307,6 +308,17 @@
 
                     </div>
 
+                    <div class="short-task__content">
+
+                        <h2 class="short-task-caption">Текст задания</h2>
+                        <div class="short-task__buttons">
+                            <button class="short-task-btn" value="accept">Завершить</button>
+                            <button class="short-task-btn" value="defer">Отложить</button>
+                            <button class="short-task-btn" value="cancel">Отменить</button>
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <div class="header-task__content">
@@ -336,7 +348,14 @@
 
         </div>
 
-        <img src="assets/pictures/svg/settings.svg" class="header-img" alt="Setting" />
+        <img src="assets/pictures/svg/settings.svg" class="header-img" onclick="showSetting(this)" alt="Setting" />
+
+        <div class="header__setting" id="header_setting">
+
+            <a class="header-setting">Внешний вид</a>
+            <a class="header-setting">Настройки</a>
+
+        </div>
 
     </div>
 
@@ -344,9 +363,11 @@
 
 <main>
 
+    <!-- Ниже расположен блок, который виден юзеру со статусом "создатель" -->
+
     <div class="main-wrapper">
 
-        <div class="creator__container" id="creator">
+        <div class="creator__container" id="creator" style="display: none">
 
             <div class="creator-newtask__container">
                 <img src="assets/pictures/svg/add.svg" class="creator-newtask-icon" alt="Add new task" onclick="createNewTask(this)"/>
@@ -357,13 +378,13 @@
 
                 <div class="task">
 
-                    <div class="task__container">
+                    <div class="task__container" onclick="showTaskDescription(this)">
 
                         <div class="task__description">
 
                             <div class="task-wrapper">
                                 <img src="assets/pictures/svg/user.svg" class="task-user-avatar" alt="User's avatar" />
-                                <h3 class="task-caption" id="task_caption" onclick="schowTaskDescription(this)">Task caption</h3>
+                                <h3 class="task-caption" id="task_caption">Task caption</h3>
                             </div>
 
                         </div>
@@ -380,7 +401,7 @@
 
                         <div class="task__date-and-time">
 
-                            <div class="task-wrapper"
+                            <div class="task-wrapper">
                                 <span class="task-text" id="task_time">12:56</span>
                                 <span class="task-text" id="task_date">02/10/2017</span>
                             </div>
@@ -399,7 +420,7 @@
 
                         <div class="task-body__container">
 
-                            <div class="task-body__points" id="points_container">
+                            <div class="task-body__points">
 
                                 <div class="task-body-point">
 
@@ -444,11 +465,118 @@
 
         </div>
 
+        <!-- Ниже расположен блок, который виден юзеру со статусом "исполнитель" -->
+
+        <div class="executor__container">
+
+            <div class="tasks__container">
+
+                <div class="task">
+
+                    <div class="task__container" onclick="showTaskPopup(this)">
+
+                        <div class="task__description">
+
+                            <div class="task-wrapper">
+                                <img src="assets/pictures/svg/user.svg" class="task-user-avatar" alt="User's avatar" />
+                                <h3 class="task-caption" id="task_caption">Task caption</h3>
+                            </div>
+
+                        </div>
+
+                        <div class="task__info">
+
+                            <div class="task-wrapper">
+                                <span class="task-icon" id="task_notification">!</span>
+                                <span class="task-text" id="task_percent">100%</span>
+                                <span class="task-icon" id="task_tag"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="task__date-and-time">
+
+                            <div class="task-wrapper"
+                            <span class="task-text" id="task_time">12:56</span>
+                            <span class="task-text" id="task_date">02/10/2017</span>
+                        </div>
+
+                    </div>
+
+                    <div class="task__popup" id="task_popup">
+
+                        <img src="assets/pictures/svg/cross.svg" class="task-close" alt="Close" onclick="hideTaskPopup(this)"/>
+
+                        <div class="task-popup__box">
+
+                            <h2 class="task-popup-box-caption">Название задачи</h2>
+                            <p class="task-popup-box-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porta,
+                                sem non luctus semper, tortor tellus dignissim enim, in finibus dolor sapien id lacus. Morbi
+                                dictum est condimentum egestas elementum. Aenean convallis, risus in consequat fringilla, ipsum
+                                enim sagittis enim, at blandit turpis est ut dui. Duis lacinia ac est at malesuada. Vivamus congue
+                                ipsum sed mauris gravida hendrerit. Morbi quis pulvinar quam. Aenean vel ante sed purus mollis
+                                porta. Vestibulum in sollicitudin orci. Donec erat nulla, luctus tempus purus eu, rutrum gravida
+                                mauris. Nam non venenatis mauris.</p>
+
+                            <p class="task-popup-box-text">Nam id varius erat, ut hendrerit purus. Maecenas ut eros eu dui
+                                malesuada tristique non ut  enim. Donec tempus est odio, in fermentum eros imperdiet a. In
+                                vitae est interdum, aliquam odio ut, ornare mauris. Vestibulum a tempus purus. Donec neque ex,
+                                lacinia in aliquet id, sodales non erat. Nam nec aliquet lectus. Aliquam condimentum vulputate
+                                nibh, placerat lobortis odio porta nec. Cras aliquam facilisis lacus. Praesent consequat quis
+                                nisi a aliquet. Sed vitae diam aliquet, blandit ex in, ultricies nisl. Maecenas efficitur
+                                consectetur augue, vitae vehicula leo bibendum vel. Curabitur condimentum dolor at cursus
+                                luctus. Nunc maximus ullamcorper dolor et dictum.</p>
+
+                            <p class="task-popup-box-text">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                                posuere cubilia Curae; Cras nisi lectus, pretium et urna eget, venenatis vehicula est.
+                                Suspendisse et leo quis libero sodales sodales. Donec in enim rutrum, tincidunt urna quis,
+                                dapibus lectus. Pellentesque euismod, magna eu feugiat vehicula, eros sem mollis libero, eget
+                                lobortis eros ex ac ante. Sed gravida mauris urna, ut pharetra eros sodales id. Donec quis
+                                massa imperdiet, congue nulla eu, dignissim purus. Suspendisse vitae ante ante. Nunc
+                                vestibulum justo mauris, dictum maximus leo lacinia ut.</p>
+
+                            <p class="task-popup-box-text">Vivamus faucibus arcu sed felis vestibulum ultricies. Nullam quis
+                                leo auctor, vulputate lectus in, posuere nibh. Donec quis massa et risus ullamcorper aliquam.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut velit massa, mattis et ultrices
+                                id, sollicitudin eget metus. Donec blandit dapibus diam. Nulla elementum diam interdum
+                                vulputate mattis. Maecenas varius nibh quis luctus tristique. Nam eget vulputate dolor.
+                                Suspendisse sollicitudin placerat urna.</p>
+
+                            <p class="task-popup-box-text">Praesent vitae consequat mi, eu pharetra velit. Donec facilisis
+                                vitae purus ac vestibulum. Quisque interdum commodo ex ut aliquam. Vestibulum ante ipsum
+                                primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus scelerisque, elit
+                                vel rhoncus dapibus, justo purus porta nisl, ac elementum velit ex quis massa. Mauris ut quam
+                                ut odio lobortis tincidunt. Maecenas sollicitudin interdum dolor, ut scelerisque nisl auctor
+                                at. Nullam in justo vitae nisl gravida laoreet ultrices ut diam. Curabitur non nibh sem.
+                                Quisque id lacus convallis, consequat ligula sed, fermentum metus. Praesent sagittis turpis
+                                ut nunc viverra sagittis.</p>
+
+                            <div class="task-popup-box__demands">
+                                <span class="task-popup-box-demand">75% оригинальности</span>
+                                <span class="task-popup-box-demand">1000 слов</span>
+                            </div>
+
+                            <div class="task-popup-box__buttons">
+                                <button class="task-popup-box-btn" value="accept">Принять</button>
+                                <button class="task-popup-box-btn" value="decline">Отвергнуть!</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </main>
 
 <!--JS-->
-<script src="js/popupHide.js"></script>
-<script src="js/ShortTasks.js"></script>
+<script src="js/hideBlock.js"></script>
 <script src="js/toggleClass.js"></script>
 <script src="js/countShortTask.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
