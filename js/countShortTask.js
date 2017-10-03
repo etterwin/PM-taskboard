@@ -1,0 +1,1 @@
+$('#header_num').text($('.header-short-task__container>div').length);
