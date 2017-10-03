@@ -21,7 +21,7 @@ function showSearchField() {
     document.getElementById('header_search_content').classList.toggle('header-search__content--active');
 }
 
-function schowTaskDescription() {
+function showTaskDescription() {
     document.getElementById('task_body').classList.toggle('task__body--active');
 }
 
@@ -31,4 +31,18 @@ function createNewTask() {
 
 function showShortTasks() {
     document.getElementById('short_task').classList.add('header-short-task__container--active');
+}
+
+function showSetting() {
+    document.getElementById('header_setting').classList.add('header__setting--active');
+}
+
+function showTaskPopup() {
+    document.getElementById('task_popup').classList.add('task__popup--active');
+    document.getElementById('shadow').classList.add('shadow--active');
+}
+
+function hideTaskPopup() {
+    document.getElementById('task_popup').classList.remove('task__popup--active');
+    document.getElementById('shadow').classList.remove('shadow--active');
 }
