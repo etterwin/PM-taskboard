@@ -46,3 +46,8 @@ function hideTaskPopup() {
     document.getElementById('task_popup').classList.remove('task__popup--active');
     document.getElementById('shadow').classList.remove('shadow--active');
 }
+
+function toggleForm() {
+    document.getElementById('form_sigin').classList.toggle('form__container--active');
+    document.getElementById('form_sigup').classList.toggle('form__container--active');
+}
