@@ -3,144 +3,123 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добро пожаловать в Panda Media Taskboard!</title>
+    <title>Welcome to DiaVita Club!</title>
     <link rel="shortcut icon" href="assets/pictures/img/title.png" type="image/png">
 
-    <!--CSS-->
-    <link rel="stylesheet" href="scss/style.scss">
+    <!-- CSS -->
+    <link href="scss/style.scss" rel="stylesheet">
 
-    <!--FONT-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&amp;subset=cyrillic,cyrillic-ext" rel="stylesheet">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Kanit:300" rel="stylesheet">
 
-    <!--JS-->
+    <!-- JS -->
     <script>
-        function toggleForm() {
-            document.getElementById('form_sigin').classList.toggle('form__container--active');
-            document.getElementById('form_sigup').classList.toggle('form__container--active');
-        }
+
+        let phrases = [
+            "Если хочешь свернуть горы, начинай с маленьких камешков.",
+            "Сегодня отилчный день для свершения подвига! Вперед!",
+            'Хотеть недостаточно, нужно действовать.',
+            'Не раскисай, осень не будет длиться вечно',
+            'Собирай камни, которые в тебя бросают - это основание будущего пъедестала',
+            'Исследуй окружающий тебя мир - он прекрасен',
+            'Живи так, будто ты умрешь завтра. Учись так, будто будешь жить вечно.',
+            'Ты можешь сделать больше, чем ты думаешь!',
+            'Никогда не сдавайся и ты увидишь, как сдаются другие.',
+            'Не дай завять помидорам любви',
+            'Не упускай возможность создать нечто стоящее',
+            'Когда видишь у человека недостаток, помни, что у тебя их несколько',
+            'Хочешь увидеть радугу? Будь готов попасть под дождь.',
+            'Всегда выбирай трудный путь - на нем ты не встретишь конкурентов.',
+            'Путь к цели может указать лишь упорство.',
+            'Ты получаешь не то, что заслуживаешь, а то, чего добиваешься.',
+            'Радуйся всему, что у тебя есть, и стремись к лучшему!',
+            'Главное не прекращай верить в свои силы!',
+            'Если не сейчас, то когда?',
+            'Рекорды существуют для того, чтобы их бить.',
+            'То, что делает тебя сильнее, других бы убило.',
+            'Если твоя жизнь заехала в тупик, не забывай, что за рулем - ты.',
+            'Помни, что самые важные вещи в жизни это не вещи.',
+            'Всегда борись со своей ленью.',
+            'Ожидание успеха это полный провал, ведь успешный человек не ждет, а действует!',
+            'Никогда подкова не принесет тебе счастья и удачи, пока не прибьешь ее к своему копыту и не начнешь пахать, как лошадь.',
+            'Нашими мыслями мы творим мир.',
+            'То, что ты делаешь сегодня - важно, потому что ты меняешь на это день своей жизни.',
+            'Если вы решили действовать, то закройте двери для сомнений!',
+            'Ты не проигравший до тех пор, пока ты не сдался.',
+            'Радуйся жизни, как ребенок.',
+            'Чем упорнее ты работаешь, тем удачливей ты становишься.',
+            'Не важно с какой скоростью ты движешься к цели, главное не останавливаться!',
+            'Никто не рождается великим. Великим становятся.',
+            'Мечты не работают, пока не работаешь ты.',
+            'Стремление - вот твое оружие к мировому господству!'];
+
+        let login = document.getElementById('login_phrase');
+
+        login.innerHTML = phrases[1];
+
     </script>
 
+    <script src="js/validation.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
 </head>
-<body class="body-form">
+<body>
 
-    <div class="form-wrapper">
+<div id="successful_login" class="successful__container">
 
-        <div id="form_sigin" class="form__container form__container--active">
+    <div class="successful__texts">
+        <h1 class="successful-caption">Приветствуем вновь!</h1>
+        <p class="successful-text" id="login_phrase"></p>
+    </div>
 
-            <form action="#" method="#" id="form_signin" class="form-signin">
+</div>
 
-                <div class="field__container">
+<div id="successful_registration" class="successful__container">
 
-                    <span class="field-number">1.</span>
-                    <label for="field_signin_list" class="field-text">Ваша роль:</label>
-                    <select name="" id="field_signin_list" class="field-signin-list" autofocus required>
-                        <option class="field-signin-item" value="creator">Создатель</option>
-                        <option class="field-signin-item" value="executor">Исполнитель</option>
-                    </select>
+    <div class="successful__texts">
+        <h1 class="successful-caption">Добро пожаловать и спасибо за регистрацию!</h1>
+        <p class="successful-text" id="registration_phrase"></p>
+    </div>
 
+</div>
+
+<div id="sign" class="sign sign-effect-in">
+
+    <div class="sign-front">
+
+        <div class="sign-content">
+
+            <form id="login_form" class="sign-form" action="" method="POST">
+
+                <div class="wrapper">
+
+                    <h2 class="form-caption">Воход в систему</h2>
+
+                    <div class="form-group">
+                        <label for="email" class="form-text">Email:</label>
+                        <input type="email" id="email" class="form-control" name="email" autofocus/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-text">Пароль:</label>
+                        <input type="password" id="password" class="form-control" name="password"/>
+                    </div>
+
+                    <div class="text-center">
+                        <p class="form-text">Забыли
+                            <a href="#" class="form-link">email</a> или
+                            <a href="#" class="form-link">пароль</a>?</p>
+                    </div>
+
+                    <div class="">
+                        <input type="submit" class="btn-login" value="Войти">
+                    </div>
+
+                    <div class="text-center">
+                        <p>Нет аккаунта?
+                            <br><a href="#" class="link form-link actions">Зарегистрируйтесь!</a></p>
+                    </div>
                 </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">2.</span>
-                    <label for="name_signin"></label>
-                    <input type="email" name="email" id="name_signin" class="field-signin" placeholder="Email"/>
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">3.</span>
-                    <label for="password_signin"></label>
-                    <input type="password" name="password" id="password_signin" class="field-signin" placeholder="Пароль"/>
-
-                </div>
-
-                <span class="form-hint">Впервые здесь? <a href="#" id="go_to_registration" class="form-link" onclick="toggleForm(this)">Зарегистрируйся!</a></span>
-
-                <button type="submit" formaction="#" name="submit_signin" class="form-btn" value="signin">Вперед!</button>
-
-            </form>
-
-        </div>
-
-        <div id="form_sigup" class="form__container">
-
-            <form action="#" method="#" enctype="multipart/form-data" id="form_signup" class="form-signup">
-
-                <div class="field__container">
-
-                    <span class="field-number">1.</span>
-                    <label for="field_signup_list" class="field-text">Ваша роль:</label>
-                    <select name="" id="field_signup_list" class="field-signup-list" autofocus required>
-                        <option class="field-signup-item" value="creator">Создатель</option>
-                        <option class="field-signup-item" value="executor">Исполнитель</option>
-                    </select>
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">2.</span>
-                    <label for="user_name"></label>
-                    <input type="text" name="user-name" id="user_name" class="field-signup" placeholder="Имя" />
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">3.</span>
-                    <label for="user_email"></label>
-                    <input type="email" name="user-email" id="user_email" class="field-signup" placeholder="Email" />
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">4.</span>
-                    <label for="user_password"></label>
-                    <input type="password" name="user-password" id="user_password" class="field-signup" placeholder="Придумайте пароль" />
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">5.</span>
-                    <label for="user_re_password"></label>
-                    <input type="password" name="user-re-password" id="user_re_password" class="field-signup" placeholder="Повторите пароль" />
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">6.</span>
-                    <label for="user_phone"></label>
-                    <input type="tel" name="user-phone" id="user_phone" class="field-signup" placeholder="Мобильный номер" />
-
-                </div>
-
-                <div class="field__container bday__container">
-
-                    <span class="field-number">7.</span>
-
-                    <label for="user_bday"><img src="assets/pictures/svg/calendar.svg" class="field-img"></label>
-                    <input type="date" name="user-bday" id="user_bday" class="field-signup bday-block"/>
-
-
-                </div>
-
-                <div class="field__container">
-
-                    <span class="field-number">8.</span>
-                    <label for="user-avatar"></label>
-                    <input type="file" name="user-avatar" id="user-avatar" class="field-avatar"/>
-                    <input type="submit" value="download" class="field-avarat-btn" />
-
-                </div>
-
-                <span class="form-hint">Уже зарегестрированы? <a href="#" id="go_to_login" class="form-link" onclick="toggleForm(this)">Войти в профиль!</a></span>
-
-                <button type="submit" formaction="#" name="submit_signup" class="form-btn" value="signup">Зарегистрироваться!</button>
 
             </form>
 
@@ -148,5 +127,72 @@
 
     </div>
 
+    <div class="sign-back">
+
+        <div class="sign-content">
+
+            <form id="register_form" class="sign-form" action="" method="POST">
+
+                <div class="wrapper">
+
+                    <h2 class="form-caption">Регистрация</h2>
+
+                    <div class="form-group">
+                        <label for="user_username"></label>
+                        <input type="text" id="user_username" class="form-control form-control-registered" name="user_username" placeholder="Имя" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_email"></label>
+                        <input type="text" id="user_email" class="form-control form-control-registered" name="user_email" placeholder="Email" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_password"></label>
+                        <input type="password" id="user_password" class="form-control form-control-registered" name="user_password" placeholder="Пароль" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_cnf_password"></label>
+                        <input type="password" id="user_cnf_password" class="form-control form-control-registered" name="user_cnf_password" placeholder="Подтвердите пароль" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_phone"></label>
+                        <input type="tel" id="user_phone" class="form-control form-control-registered" name="user_phone" placeholder="Контактный телефон" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="use_bday"></label>
+                        <input type="date" id="use_bday" class="form-control form-control-registered" name="user_bday" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user_avatar"></label>
+                        <input type="file" id="user_avatar" name="user_avatar">
+                        <input type="submit" id="user_avatar_btn" name="user_avatar_btn" value="Отправить">
+                    </div>
+
+                    <div class="">
+                        <input type="submit" class="btn-login" value="Зарегистрироваться"/>
+                    </div>
+
+                    <div class="text-center">
+                        <p>Вернуться на <a href="#" class="link form-link actions">страницу входа</a>?</p>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="js/validation.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
 </body>
 </html>
